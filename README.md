@@ -1,26 +1,31 @@
 # ps239T-final-project
 
 # Short Description
-Give a short, 1-2 paragraph description of your project. Focus on the code, not the theoretical / substantive / academic side of things.
+I used the rtweet package to search popular tweets in the US. rtweet has functions that create your auth-token for the twitter API and then use the API to run the standard API commands like search and get timeline. I wrote these popular tweets that are curated by Twitter as a csv and read through them to identify a tweet with positive emotional valence. The first tweet that was positive became my target tweet. Afterward, I used rtweets get_timeline function to retrieve the tweet history of 90 twitter users that retweeted the target tweet. I ran it in a for-loop that I manually configured to print what step it is at. The way the function works, I can restart where I left off if I get rate-limited. 
+
+After collecting the data, I cleaned it up using dplyr, tidyr and base R functions. For example, I deleted non-English language tweets, did some sanity checks to make sure I had 90 unique users, found out that I had a ton of duplicates, removed the duplicates and fixed up the time stamp data to work in a lme4. I used ggplot2 to make graphs showing some of the trend data and descriptive statistics visually. Because of the noisiness of LIWC data (0's), it was not super helpful, but the time series visual of the bing-scored sentiment was much easier to interpret. I noticed there was actually a small bump in sentiment post-target tweet when you zoomed in to a 2 week level. 
+
+Finally, after cleaning and visualizing the data, I made multilevel models with users nested in years, nested in months, nested in weeks. This is a little overkill, I'm sure. But the basic idea is that I wanted to factor in random variability from time, but without getting too fine-grained because I did expect a fixed effect (post-target tweet) in terms of days. 
 
 # Dependencies
-List what software your code depends on, as well as version numbers, like so:
-
-R, version 3.4.4
-Python, version 2.7, Anaconda distribution.
-(In your scripts, includes commands that install required packages.)
+LIWC2015
+R, version 3.4.4 and the following packages:
+dplyr
+ggplot2
+lme4
+lmerTest
+lubridate
+psych
+rtweet (accessing twitter API in March and April of 2018)
+tidyr
+tidytext
 
 # Files
 List all other files contained in the repo, along with a brief description of each one, like so:
 
 ## Data
-polity.csv: The PolityVI dataset, available here: http://www.systemicpeace.org/inscrdata.html
-nyt.csv: Contains data from the New York Times API collected via collect-nyt.ipynb . Includes information on all articles containing the term "Programmer Cat", 1980-2010.
-analysis-dataset.csv: The final Analysis Dataset derived from the raw data above. It includes country-year values for all UN countries 1980-2010, with observations for the following variables:
-ccode: Correlates of War numeric code for country observation
-year: Year of observation
-polity: PolityVI score
-nyt: Number of New York Times articles about "Programmer Cat"
+
+
 ## Code
 01_collect-nyt.py: Collects data from New York Times API and exports data to the file nyt.csv
 02_merge-data.R: Loads, cleans, and merges the raw Polity and NYT datasets into the Analysis Dataset.
