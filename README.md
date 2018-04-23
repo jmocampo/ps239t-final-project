@@ -24,14 +24,20 @@ tidytext
 List all other files contained in the repo, along with a brief description of each one, like so:
 
 ## Data
-
+01-targettweets.csv: a csv containing a list of curated most popular tweets around march 27 from twitter.
+02-retweeters.csv: a dataset of 90 people who retweeted the target tweet
+03-cleaningenv.RData: tweet object data for the first-wave of data collection and second-wave of data collection. Is large file. Contains tweet object information down to the individual tweets for the 90 users.
+04-tweetstext2.csv: text file of all the tweets
+05-LIWC2015 Results (tweetstext.csv): first LIWC coding of tweet texts
+06-LIWC2015 Results (tweetstext2.csv): second LIWC coding of tweet texts
+07-analysisenv.Rdata: the data environment I used for data analysis. Maintains the tweetobject information of most of the data.
+happyTweetstemp.csv: example of how I wrote a file to view the tweets.
 
 ## Code
-01_collect-nyt.py: Collects data from New York Times API and exports data to the file nyt.csv
-02_merge-data.R: Loads, cleans, and merges the raw Polity and NYT datasets into the Analysis Dataset.
-03_analysis.R: Conducts descriptive analysis of the data, producing the tables and visualizations found in the Results directory.
-Results
-coverage-over-time.jpeg: Graphs the number of articles about each region over time.
-regression-table.txt: Summarizes the results of OLS regression, modelling nyt on a number of covariates.
-More Information
-Include any other details you think your user might need to reproduce your results. You may also include other information such as your contact information, credits, etc.
+01-twitter-data-collection.R: how I collected my data using rtweet package.
+02-twitter-prep-file.R: cbinding the two get_timeline tweet data together, adding LIWC coded information, cleaning up date information using lubridate
+03-twitter-analysis.R: first wave of analysis, mostly descriptive plots of LIWC emotion data of the tweets, but also some linear mixed effects models attempting to find a fixed effect of the target tweet on tweet valence.
+04-twitter-analysis-using-bing.R: did my own valence coding of each tweet using the 
+
+## Results
+A ton of graphs.
