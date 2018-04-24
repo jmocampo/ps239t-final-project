@@ -5,7 +5,7 @@ library(psych)
 library(ggplot2)
 
 #again, the issue of tweet objects v. csv's makes this more complicated. Here is my 
-load("data/07-analysisenv.Rdata") #this should also be the same as the end of the environment once you complete file 02-twitter-prep-file
+load("data/06-analysisenv.Rdata") #this should also be the same as the end of the environment once you complete file 02-twitter-prep-file
 
 # Descriptive stats ---------------------------------------------------------
 users <- unique(mydata$user_id)

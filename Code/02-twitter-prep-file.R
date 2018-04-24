@@ -1,14 +1,9 @@
-install.packages("lubridate")
+install.packages("dplyr","lubridate")
 library(dplyr)
 library(lubridate)
 
 #so, in order for anything to work, I need to use the original tweet objects. I saved my environment at this stage of data collection, and so I'm loading the twitter objects below
 load("data/03-cleaningEnv.Rdata")
-
-#temp file doesn't have the plaintext column, so need to add it
-temp$plainText <- plain_tweets(temp$text)
-
-tweets <- rbind(tweets, temp)
 
 # make plaintext csv for liwc ---------------------------------------------
 tweetstext <- tweets$plainText
@@ -60,11 +55,7 @@ tweets <- ungroup(tweets)
 
 #load up LIWC output 1 and LIWC output 2 (pre target tweet and post target tweet)
 #when i originally did it, I made two separate files since it was over the course of two weeks. But you could also just load up a single LIWC output file
-LIWC1 <- read.csv("data/05-LIWC2015 Results (tweetstext.csv).csv", header = T)
-LIWC2 <- read.csv("data/06-LIWC2015 Results (tweetstext2.csv).csv", header = T)
-LIWC <- rbind(LIWC1, LIWC2)
-#now that LIWC is in one data.frame, I can remove the two pieces
-rm(LIWC1, LIWC2)
+LIWC <- read.csv("data/05-LIWC2015-Results-(tweetstext2).csv", header = T)
 
 #add LIWC columns to the data
 mydata <- cbind(tweets, LIWC)
