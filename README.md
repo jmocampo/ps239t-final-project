@@ -1,5 +1,7 @@
 # ps239T-final-project
 
+Note: I had to trim the data files because there was too much data to upload in one file. Because of this, some of the code may seem redundant or unnecessary (because I already pre-cleaned the data in order to upload it). But the results it produces should be the same as when I ran it. Also, the data collection code won't work very well because it acts on "tweet objects" from rtweet, but the data I saved was a csv, not a tweet object. In file 02 thru 04, I had saved the rData files, so the tweet objects are preserved.
+
 # Short Description
 I used the rtweet package to search popular tweets in the US. rtweet has functions that create your auth-token for the twitter API and then use the API to run the standard API commands like search and get timeline. I wrote these popular tweets that are curated by Twitter as a csv and read through them to identify a tweet with positive emotional valence. The first tweet that was positive became my target tweet. Afterward, I used rtweets get_timeline function to retrieve the tweet history of 90 twitter users that retweeted the target tweet. I ran it in a for-loop that I manually configured to print what step it is at. The way the function works, I can restart where I left off if I get rate-limited. 
 
@@ -49,4 +51,4 @@ happyTweetstemp.csv: example of how I wrote a file to view the tweets.
 04-twitter-analysis-using-bing.R: did my own valence coding of each tweet using the 
 
 ## Results
-A ton of graphs.
+A ton of graphs!
